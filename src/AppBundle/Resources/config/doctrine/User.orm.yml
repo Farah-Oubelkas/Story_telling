@@ -1,0 +1,46 @@
+AppBundle\Entity\User:
+    type: entity
+    table: null
+    repositoryClass: AppBundle\Repository\UserRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        firstName:
+            type: string
+            length: 255
+            nullable: true
+        lastName:
+            type: string
+            length: 255
+            nullable: true
+        facebookId:
+            type: string
+            length: 255
+            nullable: true
+        facebookAccessToken:
+            type: string
+            length: 255
+        googleId:
+            type: string
+            length: 255
+            nullable: true
+        googleAcessToken:
+            type: string
+            length: 255
+        phoneNumber:
+            type: string
+            length: '20'
+            nullable: true
+        fullName:
+            type: string
+            length: '250'
+            nullable: true
+        timezoneId:
+            type: string
+            length: '50'
+            nullable: true
+    lifecycleCallbacks: {  }
