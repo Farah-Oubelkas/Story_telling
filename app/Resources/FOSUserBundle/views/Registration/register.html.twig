@@ -1,0 +1,10 @@
+{% extends "@FOSUser/layout.html.twig" %}
+{% block css %}
+        <link rel="stylesheet" href="{{ asset('assets/css/security/register.css')}}"/>
+{% endblock %}
+{% block fos_user_content %}
+{% include "@FOSUser/Registration/register_content.html.twig" %}
+{% endblock fos_user_content %}
+{% block js %}
+  <script src=" {{ asset('assets/js/ajaxValidateRegistration.js')}} "></script>
+{% endblock %}
