@@ -1,0 +1,81 @@
+{% extends "::base.html.twig" %}
+{% block title %}AppBundle:admin:showUsers{% endblock %}
+{% block css %}
+    <link href="{{asset('assets/style/datatables/dataTables.bootstrap4.min.css')}}" rel="stylesheet">
+{% endblock %}
+{% block body %}
+<div class="container-fluid">
+{% for message in app.flashes('success') %}
+    <div class=" w-50 mx-auto alert alert-success alert-dismissible fade show mt-5" role="flash">
+        {{ message }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+{% endfor %}
+{% for message in app.flashes('danger') %}
+    <div class=" w-50 mx-auto alert alert-danger alert-dismissible fade show mt-5" role="flash">
+        {{ message }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+{% endfor %}
+<h1 class="display-4 my-5">Manage Users</h1>
+   <!-- DataTables Example -->
+   <div class="card mb-3">
+    <div class="card-header">
+      <i class="fas fa-user"></i>
+      Users</div>
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>USERNAME</th>
+              <th>EMAIL</th>
+              <th>ROLE</th>
+              <th>OPTION</th>
+            </tr>
+          </thead>
+          <tbody>
+          {% for user in users %}
+            <tr>
+                <td>{{user.id}}</td>
+                <td>{{user.username}}</td>
+                <td>{{user.email}}</td>
+                <td>{{user.roles[0]}}</td>
+                <td style='text-align:center'>
+                  <a href="{{ path('edit_user', {'username': user.username}) }}" style='padding:1px 8px;border:1px solid #aaa'class="btn btn-xs btn-info "><i class="fas fa-edit fa-xs"></i> </a>
+                  <a href="{{ path('delete_user', {'username': user.username}) }}" style='padding:1px 8px'class="btn btn-xs btn-danger">
+                    <i class="fas fa-trash fa-xs"></i> 
+                  </a>
+                </td>
+            </tr>
+          {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+{% block js %}
+  <!-- Page level plugin JavaScript-->
+  
+  <script src="{{asset('assets/js/datatables/jquery.dataTables.min.js')}}"></script>
+  <script src="{{asset('assets/js/datatables/dataTables.bootstrap4.min.js')}}"></script>
+  <script>
+    window.addEventListener("load",()=>{
+      $('#dataTable').DataTable( {
+          "columnDefs": [
+              { "orderable": false, "targets": 4 }
+              
+            ]
+      
+      } );
+    });
+
+  </script>
+{% endblock %}

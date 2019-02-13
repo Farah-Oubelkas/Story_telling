@@ -1,0 +1,73 @@
+{% extends "::base.html.twig" %}
+{% block title %}AppBundle:admin:showUsers{% endblock %}
+{% block css %}
+
+{% endblock %}
+{% block body %}
+<div class="my-5 col-md-9 personal-info">
+        {% for message in app.flashes('success') %}
+            <div class=" w-50 ml-3 alert alert-success alert-dismissible fade show mt-5" role="flash">
+                {{ message }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        {% endfor %}
+        <h3>Personal info</h3>
+        
+        <form class="form-horizontal" role="form" action="{{ path("edit_user",{'username': user.username}) }}" method="post">
+          <div class="form-group">
+            <label class="col-md-3 control-label">Username:</label>
+            <div class="col-md-8">
+              <input class="form-control" name='username'type="text" disabled value="{{user.username}}">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-lg-3 control-label">Email:</label>
+            <div class="col-lg-8">
+              <input class="form-control" type="text"name='email' disabled value="{{user.email}}">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-lg-3 control-label">First name:</label>
+            <div class="col-lg-8">
+              <input class="form-control" type="text" name='firstName' value="{{user.firstName}}">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-lg-3 control-label">Last name:</label>
+            <div class="col-lg-8">
+              <input class="form-control" type="text" name='lastName' value="{{user.lastName}}">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-lg-3 control-label">Facebook ID:</label>
+            <div class="col-lg-8">
+              <input class="form-control" type="text" name='facebookId' value="{{user.facebookId}}">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-lg-3 control-label">Google ID:</label>
+            <div class="col-lg-8">
+              <input class="form-control" type="text" name='googleId' value="{{user.googleId}}">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-lg-3 control-label">Phone Number:</label>
+            <div class="col-lg-8">
+              <input class="form-control" type="phone" name='phoneNumber' value="{{user.phoneNumber}}">
+            </div>
+          </div>
+           </div>
+          <div class="form-group">
+            <label class="col-md-3 control-label"></label>
+            <div class="col-md-8">
+              <input type="submit" class="btn btn-primary"
+              style="background-color:#18D06B;border:none" value="Save Changes">
+              <span></span>
+              <a href="{{path("showUsers")}}"class="btn btn-default">Cancel</a>
+            </div>
+          </div>
+        </form>
+      </div>
+{% endblock %}
