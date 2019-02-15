@@ -1,7 +1,7 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
 <div class="form">
-    <form action="{{ path("fos_user_security_check") }}" method="post">
+    <form action="{{ path("fos_user_security_check") }}" class="loginForm active" method="post">
         <h1 class="headline">login to your account</h1>
         
         {% if error %}
@@ -17,7 +17,7 @@
         <input type="Password" id="password" name="_password"  class="form-control mt-3 mx" placeholder="Password">
         <input type="checkbox" hidden checked id="remember_me" name="_remember_me" value="on" />
         <input type="submit" value="Login" id="_submit" name="_submit" class="btn mx mt-3 btn-submit">
-        <a href="{{ path('fos_user_resetting_request') }}" class="mini-link mt-2">Forgot password?</a>
+        <a href="#" class="mini-link mt-2" id="js-forget-password">Forgot password?</a>
         <span class="or mt-3">OR</span>
         <div class="social-media">
             <a href="#"class="google mt-3 mx">
@@ -32,5 +32,24 @@
         <div class="under-form">
                 <a href="{{ path('fos_user_registration_register') }}">Create new  account</a>
         </div>
+    </form>
+    <form class="PasswordRessetForm">
+        <h1 class="headline" >Forget Your Password?</h1>
+        <div class="mx activeDiv" id="sendEmailInput">
+            <label id="jsLabelReset">Enter your email or username</label>
+            <input type="text" class="form-control " id="resetPasswordInput" placeholder="Email or Username">
+            <input type="submit" value="Reset my password" id="sendForget"class="btn mx mt-3 btn-submit">
+        </div>
+        <div id="sendEmailLoading" class="inactiveDiv">
+            <!-- this is the loading animation-->
+            <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+        </div>
+        <div id="sendEmailValid" class="inactiveDiv">
+            <!-- this is the loading animation-->
+            <i class="fas fa-check"></i>
+            <h3>An email has been sent to you if you don't find it check the spam</h3>
+        </div>
+        
+        <a href="#" class="mini-link" id="BackLogin">Back to Login</a>
     </form>
 </div>

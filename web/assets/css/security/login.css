@@ -209,4 +209,111 @@ html, body {
     overflow: visible;
   }
 }
+
+.PasswordRessetForm {
+  max-height: 350px;
+  height: 300px !important;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute !important;
+      justify-content: space-around !important;
+  min-height: 250px;
+  padding: 15px !important;
+}
+
+.PasswordRessetForm .headline {
+  margin: 0px !important;
+}
+#sendForget{
+  width: 100%
+}
+
+.PasswordRessetForm label {
+  font-size: 12px;
+  text-align: left;
+  padding: 0px 10px;
+  width: 100%;
+}
+
+form {
+  display: none !important;
+}
+
+form.active {
+  display: -webkit-box !important;
+  display: -ms-flexbox !important;
+  display: flex !important;
+}
+.sendEmailLoading,.sendEmailValid{
+  height: 118px;
+  display: flex;
+  justify-content: center;
+}
+.invalidInput{
+  box-shadow: 0 0 0 0.2rem rgba(145, 11, 11, 0.5);
+  color: rgb(145, 11, 11) !important;
+}
+.invalidInput:focus{
+  box-shadow: 0 0 0 0.2rem rgba(145, 11, 11, 0.5) !important;
+  color: rgb(145, 11, 11) !important;
+}
+.Notfound{
+  color: rgb(145, 11, 11) !important;
+}
 /*# sourceMappingURL=login.css.map */
+.PasswordRessetForm > div{
+  display: none;
+  height: 120px;
+  justify-content: center;
+  flex-direction: column
+}
+.activeDiv{
+  display: flex !important;
+}
+.lds-ring {
+  display: inline-block;
+  position: relative;
+  width: 64px;
+  height: 64px;
+}
+.lds-ring div {
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  width: 51px;
+  height: 51px;
+  margin: 6px;
+  border: 6px solid #2980B9;
+  border-radius: 50%;
+  animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  border-color: #2980B9 transparent transparent transparent;
+}
+.lds-ring div:nth-child(1) {
+  animation-delay: -0.45s;
+}
+.lds-ring div:nth-child(2) {
+  animation-delay: -0.3s;
+}
+.lds-ring div:nth-child(3) {
+  animation-delay: -0.15s;
+}
+@keyframes lds-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+#sendEmailValid i{
+  font-size: 30px;
+  color: green
+}
+#sendEmailValid h3{
+  font-size: 15px;
+  padding: 15px;
+  color: green;
+  font-weight: bold;
+  line-height: 20px;
+}

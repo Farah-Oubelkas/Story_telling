@@ -32,5 +32,16 @@ class AjaxController extends Controller
         }
         
     }
+    /**
+     * @Route("/security/validateEmailOrUsername", name="validateEmailOrUsername")
+     */
+    public function validateEmailOrUsername(Request $request){
+            $usernameOrEmail = $request->request->get('user');
+            $answer = $this->get('fos_user.user_manager')->findUserByUsernameOrEmail($usernameOrEmail);
+            if(!$answer){
+                return new JsonResponse(false);
+            }
+            return new JsonResponse(true);
+    }
 
 }
