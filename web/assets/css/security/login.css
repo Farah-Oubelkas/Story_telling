@@ -1,0 +1,331 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,700");
+* {
+  padding: 0px;
+  margin: 0px;
+  font-family: 'Open Sans', sans-serif;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+}
+@media (min-width: 769px){
+  .form {
+    background: -webkit-gradient(linear, left top, right top, from(rgba(0, 0, 0, 0.15)), to(rgba(0, 0, 0, 0.15))), url("../../images/ab.jpg");
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0.15) 100%), url("../../images/ab.jpg");
+    backdrop-filter: blur ;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+}
+
+.form {
+  width: 100%;
+  height: 100%;
+  min-height: 550px;
+ 
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  overflow: hidden;
+}
+
+.form form {
+  width: 350px;
+  height: 550px;
+  max-height: 650px;
+  border-radius: 10px;
+  -webkit-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
+          box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
+  background-color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 20px 20px 70px 20px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  position: relative;
+  text-align: center;
+  overflow: hidden;
+}
+
+.form form .headline {
+  font-size: 16px;
+  text-transform: uppercase;
+  margin-bottom: 30px;
+  font-weight: bold;
+  color: #e74c3c;
+}
+
+.form form .social-media {
+  width: 100%;
+}
+
+.form form .social-media a {
+  display: block;
+  background-color: #4267B2;
+  margin: auto;
+  height: 33px;
+  line-height: 33px;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 13px;
+  border-radius: 0.25rem;
+  text-decoration: none;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  -webkit-transition: background 0.3s ease-in-out;
+  transition: background 0.3s ease-in-out;
+}
+
+.form form .social-media a:hover {
+  background-color: #426792;
+}
+
+.form form .social-media a:first-child {
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  color: #555;
+}
+
+.form form .social-media a:first-child:hover {
+  background-color: #f6f6f6;
+}
+
+.form form .social-media img {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin: 6px 10px;
+}
+
+.form form .or {
+  font-size: 12px;
+  position: relative;
+  color: #555;
+}
+
+.form form .or::before {
+  content: "";
+  position: absolute;
+  width: 50px;
+  height: 0;
+  border-top: 1px solid #555;
+  bottom: 9px;
+  left: 25px;
+}
+
+.form form .or::after {
+  content: "";
+  position: absolute;
+  width: 50px;
+  height: 0;
+  border-top: 1px solid #555;
+  bottom: 9px;
+  right: 25px;
+}
+
+.form form .alert {
+  height: 35px;
+  font-size: 12px;
+  line-height: 12px;
+  margin: 0px;
+}
+
+.form form input {
+  font-size: 13px;
+}
+
+.form form .mx {
+  width: 80%;
+}
+
+.form form .btn-submit {
+  background-color: #2980B9;
+  color: white;
+  -webkit-transition: all 0.1s ease-in-out;
+  transition: all 0.1s ease-in-out;
+}
+
+.form form .btn-submit:hover {
+  background-color: #2980cf;
+}
+
+.form form input:focus {
+  -webkit-box-shadow: 0 0 0 0.2rem rgba(44, 62, 80, 0.25);
+          box-shadow: 0 0 0 0.2rem rgba(44, 62, 80, 0.25);
+  border: none;
+}
+
+.form form .mini-link {
+  font-size: 12px;
+  color: #555;
+}
+
+.form form .under-form {
+  width: 100%;
+  height: 50px;
+  background-color: #e74c3c;
+  text-align: center;
+  line-height: 50px;
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
+}
+
+.form form .under-form a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: bold;
+  font-size: 14px;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .form {
+    overflow: visible;
+  }
+  .form form {
+    width: 100% !important;
+    min-height: 100%;
+    border-radius: 0px;
+    overflow: visible;
+  }
+}
+
+.PasswordRessetForm {
+  max-height: 350px;
+  height: 300px !important;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute !important;
+      justify-content: space-around !important;
+  min-height: 250px;
+  padding: 15px !important;
+}
+
+.PasswordRessetForm .headline {
+  margin: 0px !important;
+}
+#sendForget{
+  width: 100%
+}
+
+.PasswordRessetForm label {
+  font-size: 12px;
+  text-align: left;
+  padding: 0px 10px;
+  width: 100%;
+}
+
+form {
+  display: none !important;
+}
+
+form.active {
+  display: -webkit-box !important;
+  display: -ms-flexbox !important;
+  display: flex !important;
+}
+.sendEmailLoading,.sendEmailValid{
+  height: 118px;
+  display: flex;
+  justify-content: center;
+}
+.invalidInput{
+  box-shadow: 0 0 0 0.2rem rgba(145, 11, 11, 0.5);
+  color: rgb(145, 11, 11) !important;
+}
+.invalidInput:focus{
+  box-shadow: 0 0 0 0.2rem rgba(145, 11, 11, 0.5) !important;
+  color: rgb(145, 11, 11) !important;
+}
+.Notfound{
+  color: rgb(145, 11, 11) !important;
+}
+/*# sourceMappingURL=login.css.map */
+.PasswordRessetForm > div{
+  display: none;
+  height: 120px;
+  justify-content: center;
+  flex-direction: column
+}
+.activeDiv{
+  display: flex !important;
+}
+.loading-ring {
+  display: inline-block;
+  position: relative;
+  width: 64px;
+  height: 64px;
+}
+.loading-ring div {
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  width: 51px;
+  height: 51px;
+  margin: 6px;
+  border: 6px solid #2980B9;
+  border-radius: 50%;
+  animation: loading-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  border-color: #2980B9 transparent transparent transparent;
+}
+.loading-ring div:nth-child(1) {
+  animation-delay: -0.45s;
+}
+.loading-ring div:nth-child(2) {
+  animation-delay: -0.3s;
+}
+.loading-ring div:nth-child(3) {
+  animation-delay: -0.15s;
+}
+@keyframes loading-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+#sendEmailValid i{
+  font-size: 30px;
+  color: green
+}
+#sendEmailValid h3{
+  font-size: 15px;
+  padding: 15px;
+  color: green;
+  font-weight: bold;
+  line-height: 20px;
+}
+
+#sendEmailInvalid i{
+  font-size: 30px;
+  color: rgb(145, 11, 11)
+}
+#sendEmailInvalid h3{
+  font-size: 15px;
+  padding: 15px;
+  color: rgb(145, 11, 11);
+  font-weight: bold;
+  line-height: 20px;
+}

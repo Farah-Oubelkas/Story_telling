@@ -1,0 +1,99 @@
+{% extends "@FOSUser/layout.html.twig" %}
+{% block css %}
+        <link rel="stylesheet" href="{{ asset('assets/css/security/login.css')}}"/>
+{% endblock %}
+{% block fos_user_content %}
+    {{ include('@FOSUser/Security/login_content.html.twig') }}
+{% endblock fos_user_content %}
+{% block js %}
+    <script>
+        var input = document.getElementById("resetPasswordInput");
+        var label = document.getElementById("jsLabelReset");
+        // Make the forgetpassword and back to login link work's
+        $("#js-forget-password").click((e)=>{
+            $(".PasswordRessetForm").addClass("active");
+            $(".loginForm").removeClass("active");
+            e.preventDefault();
+        });
+        $("#BackLogin").click((e)=>{
+            // back to login form and reset the reset password
+            $(".loginForm").addClass("active");
+            $(".PasswordRessetForm").removeClass("active");
+            $(".activeDiv").removeClass("activeDiv");
+            $("#sendEmailInput").addClass("activeDiv");
+            input.value = "";
+            input.classList.remove("invalidInput");
+            label.classList.remove("Notfound");
+            $(label).text("Enter your email or username");
+            e.preventDefault();
+        });
+
+        // when user click on reset password  button "#sendForget"
+        // a checkUser() function will be called
+        // it will check if the email or username entred is in the database
+        // if it find the user it will call a sendemail() function to send the email to the user
+        $("#sendForget").click((e)=>{
+            checkUser();
+            e.preventDefault();
+        });
+        function checkUser(){
+            $.ajax({
+                    url: '{{ path("validateEmailOrUsername")}}',
+                    type: "POST",
+                    data: {
+                    "user": input.value
+                },
+                async: true,
+                success: function (data) {
+                    // data is a response from the ajax controller with true if the username ixist in the database or false if not
+                    if(data){
+                        lastRequestAt = new Date(data.date).getTime();
+                        currentRequestAt = new Date().getTime();
+                        theDiffereceOnHours = (currentRequestAt - lastRequestAt) / (1000*3600);
+                        if(theDiffereceOnHours<2){
+                            $("#sendEmailInput").removeClass("activeDiv");
+                            $("#sendEmailInvalid").addClass("activeDiv");        
+                        }else{
+                            // if the user is exist it will show a loding animation and call sendemail() function
+                            $("#sendEmailInput").removeClass("activeDiv");
+                            $("#sendEmailLoading").addClass("activeDiv");
+                            SendEmail();
+                        }
+                    }else{
+                        input.classList.add("invalidInput");
+                        label.classList.add("Notfound");
+                        $(label).text("The user is not found");
+                        input.addEventListener("keydown",()=>{
+                            input.classList.remove("invalidInput");
+                            label.classList.remove("Notfound");
+                            $(label).text("Enter your email or username");
+                        })
+                    }
+                },
+            })
+        }
+    // this function send the username or email entered to fosusercontroller to reset the password and send email to th user
+    // if the email sent then the loading animation stop and it show a message of success
+    function SendEmail(){
+        $.ajax({
+            url: '{{path("fos_user_resetting_send_email") }}',
+            type: "POST",
+            data: {
+                username: input.value
+            },
+            async: true,
+            success: function(){
+                $("#sendEmailLoading").removeClass("activeDiv");
+                $("#sendEmailValid").addClass("activeDiv");
+            },
+            error: function (xhr, msg) {
+                
+            }
+        });
+    }
+            
+    
+    
+    
+    </script>
+{% endblock %}

@@ -1,0 +1,58 @@
+{% trans_default_domain 'FOSUserBundle' %}
+<div class="form">
+
+    {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}})
+    }}
+
+    {{ form_errors(form) }}
+    <h1 class="headline">Create new account</h1>
+    <div class="social-media">
+        <a href="#" class="google">
+            <img src="{{ asset('assets/images/search.svg')}}" alt="google">
+            <span>Google</span>
+        </a>
+        <a href="#" class="facebook">
+            <img src="{{ asset('assets/images/facebook-logo.svg')}}" alt="facebook">
+            <span>Facebook</span>
+        </a>
+    </div>
+    <span class="or mt-3">OR</span>
+    <div class="wrapper">
+        <div>
+            <span class="errorInput" id="usernameError">
+                {% for errorItem in form.username.vars.errors %}
+                {{ errorItem.message }}
+                {% endfor %}
+            </span>
+            {{ form_widget(form.username,{'attr':{'class':"form-control mt-4 mx","autocompete":false,'placeholder':'Username'}})
+            }}
+        </div>
+        <div>
+            <span class="errorInput" id="emailError">
+                {% for errorItem in form.email.vars.errors %}
+                {{ errorItem.message }}
+                {% endfor %}
+            </span>
+            {{ form_widget(form.email,{'attr':{'class':"form-control mt-4 mx","autocompete":false,'placeholder':'Email'}})
+            }}
+        </div>
+        <div>
+            {{ form_widget(form.plainPassword.first,{'attr':{'class':"form-control mt-4 mx",'placeholder':'Password'}})
+            }}
+        </div>
+        <div>
+            <span class="errorInput" id="passwordError">
+                {% for errorItem in form.plainPassword.first.vars.errors %}
+                {{ errorItem.message }}
+                {% endfor %}
+            </span>
+        {{ form_widget(form.plainPassword.second,{'attr':{'class':"form-control mt-4 mx",'placeholder':'Repeat Password'}})
+        }}
+        </div>
+        <input type="submit" class="btn mt-3 mx btn-submit">
+    </div>
+    <div class="under-form">
+        <a href="{{ path('fos_user_security_login') }}">Login to my account</a>
+    </div>
+    {{ form_end(form) }}
+</div>
