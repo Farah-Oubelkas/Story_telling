@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\User;
 use FOS\UserBundle\FOSUserBundle;
 use AppBundle\Repository\UserRepository;
 use Symfony\Component\HttpFoundation\Request;
@@ -34,14 +35,16 @@ class AjaxController extends Controller
     }
     /**
      * @Route("/security/validateEmailOrUsername", name="validateEmailOrUsername")
+     * This action will return the last password request time if it find the user or flase if there is no user
      */
-    public function validateEmailOrUsername(Request $request){
+    public function validateEmailOrUsernameAction(Request $request){
             $usernameOrEmail = $request->request->get('user');
-            $answer = $this->get('fos_user.user_manager')->findUserByUsernameOrEmail($usernameOrEmail);
-            if(!$answer){
+            $user = $this->get('fos_user.user_manager')->findUserByUsernameOrEmail($usernameOrEmail);
+            if(!$user){
                 return new JsonResponse(false);
             }
-            return new JsonResponse(true);
+            $time = $user->getPasswordRequestedAt();
+            return new JsonResponse($time);
     }
 
 }

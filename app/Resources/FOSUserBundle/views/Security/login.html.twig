@@ -16,8 +16,15 @@
             e.preventDefault();
         });
         $("#BackLogin").click((e)=>{
+            // back to login form and reset the reset password
             $(".loginForm").addClass("active");
             $(".PasswordRessetForm").removeClass("active");
+            $(".activeDiv").removeClass("activeDiv");
+            $("#sendEmailInput").addClass("activeDiv");
+            input.value = "";
+            input.classList.remove("invalidInput");
+            label.classList.remove("Notfound");
+            $(label).text("Enter your email or username");
             e.preventDefault();
         });
 
@@ -29,8 +36,6 @@
             checkUser();
             e.preventDefault();
         });
-
-
         function checkUser(){
             $.ajax({
                     url: '{{ path("validateEmailOrUsername")}}',
@@ -42,11 +47,18 @@
                 success: function (data) {
                     // data is a response from the ajax controller with true if the username ixist in the database or false if not
                     if(data){
-                        // if the user is exist it will show a loding animation and call sendemail() function
-                        $("#sendEmailInput").removeClass("activeDiv");
-                        $("#sendEmailValid").removeClass("activeDiv");
-                        $("#sendEmailLoading").addClass("activeDiv");
-                        SendEmail();
+                        lastRequestAt = new Date(data.date).getTime();
+                        currentRequestAt = new Date().getTime();
+                        theDiffereceOnHours = (currentRequestAt - lastRequestAt) / (1000*3600);
+                        if(theDiffereceOnHours<2){
+                            $("#sendEmailInput").removeClass("activeDiv");
+                            $("#sendEmailInvalid").addClass("activeDiv");        
+                        }else{
+                            // if the user is exist it will show a loding animation and call sendemail() function
+                            $("#sendEmailInput").removeClass("activeDiv");
+                            $("#sendEmailLoading").addClass("activeDiv");
+                            SendEmail();
+                        }
                     }else{
                         input.classList.add("invalidInput");
                         label.classList.add("Notfound");
@@ -64,19 +76,18 @@
     // if the email sent then the loading animation stop and it show a message of success
     function SendEmail(){
         $.ajax({
-            url: '/resetting/send-email',
+            url: '{{path("fos_user_resetting_send_email") }}',
             type: "POST",
             data: {
                 username: input.value
             },
             async: true,
             success: function(){
-                $("#sendEmailInput").removeClass("activeDiv");
                 $("#sendEmailLoading").removeClass("activeDiv");
                 $("#sendEmailValid").addClass("activeDiv");
             },
             error: function (xhr, msg) {
-                console.log(msg);
+                
             }
         });
     }

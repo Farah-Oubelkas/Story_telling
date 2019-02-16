@@ -271,13 +271,13 @@ form.active {
 .activeDiv{
   display: flex !important;
 }
-.lds-ring {
+.loading-ring {
   display: inline-block;
   position: relative;
   width: 64px;
   height: 64px;
 }
-.lds-ring div {
+.loading-ring div {
   box-sizing: border-box;
   display: block;
   position: absolute;
@@ -286,19 +286,19 @@ form.active {
   margin: 6px;
   border: 6px solid #2980B9;
   border-radius: 50%;
-  animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  animation: loading-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
   border-color: #2980B9 transparent transparent transparent;
 }
-.lds-ring div:nth-child(1) {
+.loading-ring div:nth-child(1) {
   animation-delay: -0.45s;
 }
-.lds-ring div:nth-child(2) {
+.loading-ring div:nth-child(2) {
   animation-delay: -0.3s;
 }
-.lds-ring div:nth-child(3) {
+.loading-ring div:nth-child(3) {
   animation-delay: -0.15s;
 }
-@keyframes lds-ring {
+@keyframes loading-ring {
   0% {
     transform: rotate(0deg);
   }
@@ -314,6 +314,18 @@ form.active {
   font-size: 15px;
   padding: 15px;
   color: green;
+  font-weight: bold;
+  line-height: 20px;
+}
+
+#sendEmailInvalid i{
+  font-size: 30px;
+  color: rgb(145, 11, 11)
+}
+#sendEmailInvalid h3{
+  font-size: 15px;
+  padding: 15px;
+  color: rgb(145, 11, 11);
   font-weight: bold;
   line-height: 20px;
 }

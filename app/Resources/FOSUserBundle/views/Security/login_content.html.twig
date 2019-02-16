@@ -40,14 +40,17 @@
             <input type="text" class="form-control " id="resetPasswordInput" placeholder="Email or Username">
             <input type="submit" value="Reset my password" id="sendForget"class="btn mx mt-3 btn-submit">
         </div>
-        <div id="sendEmailLoading" class="inactiveDiv">
+        <div id="sendEmailLoading" >
             <!-- this is the loading animation-->
-            <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+            <div class="loading-ring"><div></div><div></div><div></div><div></div></div>
         </div>
-        <div id="sendEmailValid" class="inactiveDiv">
-            <!-- this is the loading animation-->
+        <div id="sendEmailValid">
             <i class="fas fa-check"></i>
             <h3>An email has been sent to you if you don't find it check the spam</h3>
+        </div>
+        <div id="sendEmailInvalid">
+            <i class="fas fa-times"></i>
+            <h3>You can only send one reset password each 2hours</h3>
         </div>
         
         <a href="#" class="mini-link" id="BackLogin">Back to Login</a>
