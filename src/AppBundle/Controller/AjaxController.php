@@ -43,8 +43,8 @@ class AjaxController extends Controller
             if(!$user){
                 return new JsonResponse(false);
             }
-            $time = $user->getPasswordRequestedAt();
-            return new JsonResponse($time);
+            $PasswordRequestedAt = $user->getPasswordRequestedAt();
+            return new JsonResponse($PasswordRequestedAt);
     }
 
 }
